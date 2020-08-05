@@ -1,0 +1,41 @@
+// English is not my native language!
+// stock Exchange
+// This is just my finance calculator
+// It calculates how much do you pretende to invest and how much you can. For finally it shows up how much remain in your wallet and your DividendYield
+#include <stdio.h>
+#include <cs50.h>
+
+int quantidade;
+
+int main(void)
+{
+    float resto, di;
+  // Investment portfolio name
+    string nome = get_string("Nome da ação: ");
+    
+  // How much do you pretende invest
+    float r = get_float("Investimento: ");
+    
+  // How much it cost each trade
+    float valor = get_float("Valor da ação: ");
+    
+  // Yield rate
+    float taxa = get_float("Valor da taxa: ");
+
+    printf("\n");
+   
+    quantidade = r / valor;
+  // "You can buy X of trade in 'investment portfolio name'"
+    printf("Poderá comprar %.0d ações na %s.\n", quantidade, nome);
+    {
+        resto = r-= valor * quantidade;
+    }
+  // "It remains to you Y"  
+    printf("Sobrará do valor investido R$ %0.2f\n", resto);
+
+    di = quantidade * valor * taxa / 100;
+    {
+  // "Your dividend yield"
+        printf("E seu Dividend yield será de R$ %.2f\n", di);
+    }
+}
